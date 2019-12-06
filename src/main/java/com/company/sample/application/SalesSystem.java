@@ -33,7 +33,7 @@ public class SalesSystem {
     public static void main(String[] args) {
         //Start the profiler
         Profiler systemProfiler =
-            Profiler.builder().profilingGroupName("<Insert the profiling group name here>")
+            Profiler.builder().profilingGroupName("profgr2")
             .awsCredentialsProvider(DefaultCredentialsProvider.create())
             .build();
 
@@ -50,10 +50,9 @@ public class SalesSystem {
         //Start list order thread
         ListOrderThread listOrderThread = new ListOrderThread();
 
-        DateFormat currentDateFormat = new SimpleDateFormat("dd MMM yyyy");
+        DateFormat currentDateFormat = new SimpleDateFormat("yyyy/MM/dd");
         listOrderThread.setDate(currentDateFormat.format(new Date()));
 
         listOrderThread.start();
     }
 }
-

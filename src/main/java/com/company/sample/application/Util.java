@@ -28,9 +28,9 @@ public class Util {
      */
     public static Date getRandomDate(){
 
-        GregorianCalendar gc = new GregorianCalendar();
+        final GregorianCalendar gc = new GregorianCalendar();
 
-        int dayOfYear = randBetween(1, gc.getActualMaximum(gc.DAY_OF_YEAR));
+        final int dayOfYear = randBetween(1, gc.getActualMaximum(gc.DAY_OF_YEAR));
 
         gc.set(gc.DAY_OF_YEAR, dayOfYear);
 
@@ -44,7 +44,8 @@ public class Util {
      * @return
      */
     public static int randBetween(int start, int end) {
-        return start + (int)Math.round(Math.random() * (end - start));
+        final int bet = (int)Math.round(Math.random() * (end - start));
+        return start + bet;
     }
 
     /**

@@ -34,8 +34,10 @@ public enum ProductName{
          * Here is attempting to parse a value in the enum, if the value is not found in the enum,
          * it results in an exception being thrown, comment the below two lines to fix it and uncomment line 43
          */
-        ProductName productName = ProductName.valueOf(name);
-        return Optional.of(productName);
+        final ProductName productName = ProductName.valueOf(name);
+        final Optional<ProductName> pn = Enums.getIfPresent(ProductName.class, name);
+        // return Optional.of(productName);
+        return pn;
 
         /**
          * Resolution: uncomment the following line to see how this improves the profile.
