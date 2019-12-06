@@ -38,10 +38,10 @@ public class ListOrderThread extends Thread {
      * Here DateFormatSymbols are not provided to the SimpleDateFormat
      * constructor and it will look up on every call, comment the below two lines
      */
-    private static DateFormat myFormat = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z");
-    private static DateFormat todayFormat = new SimpleDateFormat("dd MMM yyyy");
+    private static DateFormat myFormat = new SimpleDateFormat("EEE yyyy/MM/dd HH:mm:ss z");
+    private static DateFormat todayFormat = new SimpleDateFormat("yyyy/MM/dd");
 
-    private static String today = null;
+    public static String today = null;
 
     @Override
     public void run() {
@@ -63,7 +63,7 @@ public class ListOrderThread extends Thread {
                     objectMapper.setDateFormat(myFormat);
                     Date todayDate = todayFormat.parse(this.today);
                     if(Util.isSameDay(orderDate, todayDate)) {
-                        String orderAsString = objectMapper.writeValueAsString(SalesSystem.orders.get(orderDate));
+                        final String orderAsString = objectMapper.writeValueAsString(SalesSystem.orders.get(orderDate));
                     }
                 } catch (JsonProcessingException e) {
                     e.printStackTrace();
